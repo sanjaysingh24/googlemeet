@@ -81,14 +81,7 @@ const App = () => {
           <Button variant="contained" color="secondary" onClick={handleSignoutClick}>
             Sign Out
           </Button>
-          <TextField
-            label="Duration (minutes)"
-            type="number"
-            value={duration}
-            onChange={(e) => setDuration(parseInt(e.target.value))}
-            inputProps={{ min: 1 }}
-            margin="normal"
-          />
+         
           <Button variant="contained" color="primary" onClick={createMeet}>
             Create Google Meet
           </Button>
