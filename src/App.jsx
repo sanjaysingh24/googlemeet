@@ -6,7 +6,7 @@ const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [meetLink, setMeetLink] = useState('');
   const [eventId, setEventId] = useState('');
-  const [duration, setDuration] = useState(30); // Default duration 30 minutes
+  const [duration, setDuration] = useState(1); // Default duration 30 minutes
 
   const updateSignInStatus = (isSignedIn) => {
     setIsSignedIn(isSignedIn);
@@ -47,9 +47,7 @@ const App = () => {
       setEventId(response.result.id);
 
       // Schedule the end of the meeting
-      setTimeout(() => {
-        endMeet();
-      }, duration * 60000);
+     
     });
   };
 
@@ -61,7 +59,9 @@ const App = () => {
       });
     }
   };
-
+  setTimeout(() => {
+    endMeet();
+  }, duration * 6000);
   return (
     <Container>
       <Typography variant="h4">Google Meet Integration</Typography>
