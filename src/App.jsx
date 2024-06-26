@@ -61,7 +61,7 @@ const App = () => {
   };
   setTimeout(() => {
     endMeet();
-  }, duration * 6000);
+  }, 3000);
   return (
     <Container>
       <Typography variant="h4">Google Meet Integration</Typography>
