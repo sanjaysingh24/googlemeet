@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { initClient, handleAuthClick, handleSignoutClick, createGoogleMeet, deleteGoogleMeet } from './googlemeet.js';
-import { Button, TextField, Container, Typography } from '@mui/material';
+import { Button, Container, Typography } from '@mui/material';
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -19,7 +19,7 @@ const App = () => {
 
   const createMeet = () => {
     const startDateTime = new Date();
-    const endDateTime = new Date('2024-06-26T15:33:00-07:00');
+    const endDateTime = new Date(startDateTime.getTime() + duration * 60000);
 
     const event = {
       summary: 'Google Meet',
@@ -59,19 +59,22 @@ const App = () => {
   const endMeet = () => {
     if (eventId) {
       deleteGoogleMeet(eventId).then(() => {
-        setMeetLink('');
-        setEventId('');
-        if (timerId) {
-          clearTimeout(timerId);
-          setTimerId(null);
-        }
+        resetState();
       });
+    }
+  };
+
+  const resetState = () => {
+    setMeetLink('');
+    setEventId('');
+    if (timerId) {
+      clearTimeout(timerId);
+      setTimerId(null);
     }
   };
 
   return (
     <Container>
-      <Typography variant="h4">Google Meet Integration</Typography>
       {!isSignedIn ? (
         <Button variant="contained" color="primary" onClick={handleAuthClick}>
           Sign In
@@ -81,7 +84,6 @@ const App = () => {
           <Button variant="contained" color="secondary" onClick={handleSignoutClick}>
             Sign Out
           </Button>
-         
           <Button variant="contained" color="primary" onClick={createMeet}>
             Create Google Meet
           </Button>
