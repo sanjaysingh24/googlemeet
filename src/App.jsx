@@ -19,7 +19,7 @@ const App = () => {
 
   const createMeet = () => {
     const startDateTime = new Date();
-    const endDateTime = new Date(startDateTime.getTime() + duration * 60000);
+    const endDateTime = new Date('2024-06-26T15:31:00-07:00');
 
     const event = {
       summary: 'Google Meet',
