@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { initClient, handleAuthClick, handleSignoutClick, createGoogleMeet, deleteGoogleMeet } from './googlemeet.js';
-import { Button, Container, Typography } from '@mui/material';
+import { Button, Container, TextField, Typography } from '@mui/material';
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -84,6 +84,13 @@ const App = () => {
           <Button variant="contained" color="secondary" onClick={handleSignoutClick}>
             Sign Out
           </Button>
+          <TextField
+            label="Duration (minutes)"
+            type="number"
+            value={duration}
+            onChange={(e) => setDuration(Number(e.target.value))}
+            margin="normal"
+          />
           <Button variant="contained" color="primary" onClick={createMeet}>
             Create Google Meet
           </Button>
