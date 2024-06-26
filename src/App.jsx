@@ -6,14 +6,16 @@ const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [meetLink, setMeetLink] = useState('');
   const [eventId, setEventId] = useState('');
-  const [duration, setDuration] = useState(30); // Default duration 30 minutes
+  const [duration, setDuration] = useState(2); // Default duration 30 minutes
 
   const updateSignInStatus = (isSignedIn) => {
     setIsSignedIn(isSignedIn);
   };
 
   useEffect(() => {
+   
     initClient(updateSignInStatus);
+    automatic();
   }, []);
 
   const createMeet = () => {
@@ -56,6 +58,12 @@ const App = () => {
       });
     }
   };
+
+  const automatic = ()=>{
+    if(duration===0){
+      handleSignoutClick();
+    }
+  }
 
   return (
     <Container>
