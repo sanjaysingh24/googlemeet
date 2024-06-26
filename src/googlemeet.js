@@ -1,5 +1,3 @@
-// src/googleMeet.js
-
 import { gapi } from 'gapi-script';
 
 const CLIENT_ID = '512538371782-f5o1ni8ofqg2uqvggo70th65sh5ppd3l.apps.googleusercontent.com';
@@ -34,5 +32,12 @@ export const createGoogleMeet = (event) => {
     calendarId: 'primary',
     resource: event,
     conferenceDataVersion: 1,
+  });
+};
+
+export const deleteGoogleMeet = (eventId) => {
+  return gapi.client.calendar.events.delete({
+    calendarId: 'primary',
+    eventId: eventId,
   });
 };
